@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ReporteBaches.app.ViewModels"
+             xmlns:converters="clr-namespace:ReporteBaches.app.Converters"
+             x:DataType="viewmodels:ReportesViewModel"
+             x:Class="ReporteBaches.app.Views.ReportarPage"
+             Title="Reportar Bache"
+             BackgroundColor="#F8FAFC">
+
+    <ContentPage.Resources>
+        <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewmodels:ReportesViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15" MaximumWidthRequest="500" HorizontalOptions="Center">
+
+            <Border HeightRequest="200" Padding="0" StrokeThickness="1" Stroke="#E2E8F0" StrokeShape="RoundRectangle 12">
+                <Grid BackgroundColor="#F1F5F9">
+                    <Image Source="{Binding RutaImagen}" 
+                           Aspect="AspectFill"
+                           IsVisible="{Binding RutaImagen, Converter={StaticResource NullToBoolConverter}}"/>
+
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="8"
+                                         IsVisible="{Binding RutaImagen, Converter={StaticResource NullToBoolConverter}, ConverterParameter=invert}">
+                        <Label Text="📸 Foto del Bache" TextColor="#64748B" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        <Label Text="Presiona para activar la cámara" TextColor="#94A3B8" FontSize="12" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Button Text="Capturar Foto"
+                    Command="{Binding TomarFotoCommand}"
+                    BackgroundColor="#0EA5E9"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    HeightRequest="45"/>
+
+            <Editor Placeholder="Describe el daño o calle dañada..."
+                    Text="{Binding Descripcion}"
+                    HeightRequest="85"
+                    BackgroundColor="White"/>
+
+            <Border BackgroundColor="#F1F5F9" StrokeThickness="1" Stroke="#E2E8F0" StrokeShape="RoundRectangle 8" Padding="12">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Ubicación GPS Actual:" FontAttributes="Bold" TextColor="#475569" FontSize="12"/>
+                    <Label Text="{Binding CoordenadasTexto}" TextColor="#0F172A" FontSize="14" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="🎯 Obtener Ubicación"
+                    Command="{Binding ObtenerUbicacionCommand}"
+                    BackgroundColor="#10B981"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    HeightRequest="45"/>
+
+            <BoxView HeightRequest="1" Color="#E2E8F0" Margin="0,5"/>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color="#38BDF8" HorizontalOptions="Center"/>
+
+            <Button Text="Enviar Reporte (+50 Puntos)"
+                    Command="{Binding EnviarReporteCommand}"
+                    BackgroundColor="#4F46E5"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    HeightRequest="50"
+                    FontSize="16"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

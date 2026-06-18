@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ReporteBaches.app.ViewModels"
+             x:DataType="viewmodels:PerfilViewModel"
+             x:Class="ReporteBaches.app.Views.PerfilPage"
+             Title="Mi Perfil"
+             BackgroundColor="#F8FAFC">
+
+    <ContentPage.BindingContext>
+        <viewmodels:PerfilViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20" MaximumWidthRequest="450" HorizontalOptions="Center">
+
+            <Border HeightRequest="100" WidthRequest="100" StrokeShape="RoundRectangle 50" StrokeThickness="1" Stroke="#4F46E5" Padding="0" HorizontalOptions="Center">
+                <Grid BackgroundColor="#4F46E5">
+                    <Label Text="👤" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Grid>
+            </Border>
+
+            <Label Text="{Binding Usuario.NombreUsuario}" FontSize="24" FontAttributes="Bold" TextColor="#1F2937" HorizontalOptions="Center"/>
+            <Label Text="{Binding Usuario.Email}" FontSize="14" TextColor="#6B7280" HorizontalOptions="Center"/>
+
+            <Border BackgroundColor="White" StrokeThickness="1" Stroke="#E5E7EB" StrokeShape="RoundRectangle 12" Padding="20">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="🏆 Puntos Acumulados" FontSize="13" TextColor="#4B5563" HorizontalOptions="Center"/>
+                    <Label Text="{Binding Usuario.PuntosAcumulados}" FontSize="44" FontAttributes="Bold" TextColor="#10B981" HorizontalOptions="Center"/>
+                    <Label Text="{Binding Usuario.RangoCiudadano}" FontSize="16" FontAttributes="Bold" TextColor="#4F46E5" HorizontalOptions="Center" Margin="0,5,0,0"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Cerrar Sesión"
+                    Command="{Binding CerrarSesionCommand}"
+                    BackgroundColor="#EF4444"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    HeightRequest="45"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

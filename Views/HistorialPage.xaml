@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ReporteBaches.app.ViewModels"
+             xmlns:models="clr-namespace:ReporteBaches.app.Models"
+             x:Class="ReporteBaches.app.Views.HistorialPage"
+             Title="Mis Reportes"
+             BackgroundColor="#F8FAFC">
+
+    <Grid Padding="15">
+        <CollectionView ItemsSource="{x:Static viewmodels:ReportesViewModel.ReportesRealizados}"
+                        EmptyView="Aún no tienes reportes enviados.">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:ReporteModel">
+                    <Border StrokeThickness="1" Stroke="#E2E8F0" Margin="0,0,0,10" Padding="12" StrokeShape="RoundRectangle 10" BackgroundColor="White">
+                        <Grid ColumnDefinitions="80, *" ColumnSpacing="12">
+
+                            <Image Grid.Column="0" Source="{Binding RutaImagenLocal}" Aspect="AspectFill" HeightRequest="70" WidthRequest="70"/>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                <Label Text="{Binding Descripcion}" MaxLines="1" LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="#1E293B"/>
+                                <Label Text="{Binding FechaCreacion, StringFormat='Fecha: {0:dd/MM/yyyy}'}" FontSize="11" TextColor="#64748B"/>
+                                <HorizontalStackLayout Spacing="8">
+                                    <Label Text="Estado:" FontSize="12" TextColor="#64748B"/>
+                                    <Label Text="{Binding Estado}" FontAttributes="Bold" FontSize="12" TextColor="#D97706"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
