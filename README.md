@@ -140,7 +140,7 @@ Posibles mejoras futuras:
 
 ## 👩‍💻 Autora
 
-Desarrollado por **ManzanoDeAbril**, **Salmon5g** y **Mauricio** 
+Desarrollado por **Matias Ojeda**, **Juan Pablo Saavedra** y **Mauricio Lizana** 
 GitHub: [@ManzanoDeAbril](https://github.com/ManzanoDeAbril)
 
 ---
