@@ -16,6 +16,9 @@ public partial class PerfilViewModel : ObservableObject
     /// </summary>
     public void CargarDatos()
     {
+        // Primero ponemos null para forzar que [ObservableProperty]
+        // detecte un cambio real y dispare PropertyChanged al reasignar
+        Usuario = null;
         Usuario = App.UsuarioActual;
     }
 

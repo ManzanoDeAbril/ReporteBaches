@@ -1,28 +1,27 @@
-﻿using System; // Importa el sistema base de .NET (tipos básicos)
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace ReporteBaches.app.Models; // Organiza el código en el espacio 'Models' del proyecto
+namespace ReporteBaches.app.Models;
 
-/// <summary>
-/// Clase pública que representa al usuario (ciudadano) y sus logros en la app.
-/// </summary>
-public class UsuarioModel
+// Extendemos ObservableObject para que los cambios en propiedades avisen a la UI
+public partial class UsuarioModel : ObservableObject
 {
-    // 'string?' indica que el NombreUsuario puede ser una cadena de texto o ser nulo (null)
-    // 'get; set;' permite leer (get) y escribir (set) el valor de esta propiedad
-    public string? NombreUsuario { get; set; }
+    [ObservableProperty]
+    public partial string? NombreUsuario { get; set; }
 
-    // Correo del usuario (acepta valores nulos con el signo '?')
-    public string? Email { get; set; }
+    [ObservableProperty]
+    public partial string? Email { get; set; }
 
-    // Puntos acumulados (tipo 'int' para números enteros; no acepta nulos por defecto)
-    public int PuntosAcumulados { get; set; }
+    // [NotifyPropertyChangedFor] hace que cuando PuntosAcumulados cambie,
+    // también se notifique que RangoCiudadano cambió (ya que depende de él)
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(RangoCiudadano))]
+    public partial int PuntosAcumulados { get; set; }
 
-    // Propiedad de solo lectura (get) que calcula el rango según los puntos.
-    // Utiliza la sintaxis de expresión C# (=>) y una estructura 'switch' moderna.
+    // Esta propiedad calculada sigue igual, solo lectura
     public string RangoCiudadano => PuntosAcumulados switch
     {
-        < 100 => "Ciudadano Iniciante 🥉",  // Si es menor a 100 puntos
-        < 300 => "Guardián de las Vías 🥈", // Si es menor a 300 puntos
-        _ => "Héroe del Pavimento 🥇"        // El guion bajo (_) es el caso por defecto (cualquier otro valor)
+        < 100 => "Ciudadano Iniciante 🥉",
+        < 300 => "Guardián de las Vías 🥈",
+        _ => "Héroe del Pavimento 🥇"
     };
 }
