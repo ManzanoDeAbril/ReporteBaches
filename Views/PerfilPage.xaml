@@ -14,9 +14,14 @@
     <ScrollView>
         <VerticalStackLayout Padding="25" Spacing="20" MaximumWidthRequest="450" HorizontalOptions="Center">
 
-            <Border HeightRequest="100" WidthRequest="100" StrokeShape="RoundRectangle 50" StrokeThickness="1" Stroke="#4F46E5" Padding="0" HorizontalOptions="Center">
-                <Grid BackgroundColor="#4F46E5">
-                    <Label Text="👤" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Border HeightRequest="100" WidthRequest="100" StrokeShape="RoundRectangle 50" StrokeThickness="1" Stroke="#F8FAFC" Padding="0" HorizontalOptions="Center">
+                <Grid BackgroundColor="#F8FAFC">
+                    <Image Source="logo_reportebaches.png"
+               HeightRequest="80"
+               WidthRequest="80"
+               Aspect="AspectFit"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
                 </Grid>
             </Border>
 
