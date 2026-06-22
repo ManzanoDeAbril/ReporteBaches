@@ -14,7 +14,7 @@
     <ScrollView VerticalOptions="Center">
         <VerticalStackLayout Padding="35" Spacing="20" MaximumWidthRequest="450" HorizontalOptions="Center">
 
-            <Image Source="vialimpia_logo_1781744435595.png" 
+            <Image Source="logo_reportebaches.png" 
                    HeightRequest="110"
                    WidthRequest="110"
                    HorizontalOptions="Center"
