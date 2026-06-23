@@ -2,13 +2,6 @@
 
 Aplicación móvil multiplataforma desarrollada con **.NET MAUI** que permite a ciudadanos reportar baches y daños viales usando su smartphone. El sistema incluye captura de foto, ubicación GPS automática y un sistema de puntos de recompensa para incentivar la participación ciudadana.
 
----
-
-## 📱 Capturas de pantalla
-
-> *(Agrega aquí screenshots de la app corriendo en Android o iOS)*
-
----
 
 ## ✨ Funcionalidades
 
