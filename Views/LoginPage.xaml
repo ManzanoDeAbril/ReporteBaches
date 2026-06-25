@@ -4,7 +4,7 @@
              xmlns:viewmodels="clr-namespace:ReporteBaches.app.ViewModels"
              x:DataType="viewmodels:LoginViewModel"
              x:Class="ReporteBaches.app.Views.LoginPage"
-             BackgroundColor="#0F172A"
+             BackgroundColor="#512BD4"
              Shell.NavBarIsVisible="False">
 
     <ContentPage.BindingContext>
